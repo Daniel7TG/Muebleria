@@ -34,6 +34,9 @@ public class StaticUtilities {
 //		grid.gridx = x;
 //		grid.gridy = y;
 //		contentFrame.contentPanel.add(label, grid);
+		if(!label.getText().equals("")) {
+			return;
+		}
 		label.setForeground(color);
 		Timer timer = new Timer();
 		timer.schedule(new TimerTask(){
@@ -41,10 +44,7 @@ public class StaticUtilities {
 			@Override
 			public void run() {
 				label.setText(text);
-				System.out.println("todavia no");
 				if(time <= 0) {
-//					contentFrame.repaint();
-					System.out.println("listo");
 					label.setText("");
 					this.cancel();
 				}

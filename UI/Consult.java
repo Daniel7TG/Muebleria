@@ -74,7 +74,7 @@ public class Consult extends ButtonsFrame {
 		System.out.println("Left");
 		new ConsultClients("Clientes");
 		StaticUtilities.returnButton.push(this);
-		this.setVisible(false);
+		this.dispose();
 	}
 
 	@Override

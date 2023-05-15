@@ -44,6 +44,11 @@ public class Muebleria extends ButtonsFrame {
 			new JTextArea("0"), 
 			new JTextArea("0"), 
 	};
+	Venta venta;
+//	String fecha;
+//	int idCliente;
+//	int idProducto;
+//	int cantidad;
 	
 	Muebleria(String textTittle, String textButtonLeft, String textButtonRight) {
 		super(textTittle, textButtonLeft, textButtonRight);
@@ -76,7 +81,7 @@ public class Muebleria extends ButtonsFrame {
 		ventaTitle.setFont(textFont);
 		contentPanel.add(ventaTitle, position);
 		
-		// Agregar el 
+		// Agregar paneles 
 		position.gridy = 1;
 		for(int i = 0; i < panels.length; i++) {
 			position.gridx = i;
@@ -112,10 +117,19 @@ public class Muebleria extends ButtonsFrame {
 		super.actionPerformed(e);
 		
 		if(e.getSource() == ventaButton) {
-			if(StaticUtilities.registerTest(false)) {
-				StaticUtilities.temporalMessage(labelTemp, "Se Registro Correctamente", Color.GREEN);
-			}else{
-				StaticUtilities.temporalMessage(labelTemp, "No se registro la Venta", Color.RED);				
+			try {
+				String fecha = textAreas[0].getText();
+				int idCliente = Integer.parseInt(textAreas[1].getText());
+				int idProducto = Integer.parseInt(textAreas[2].getText());
+				int cantidad = Integer.parseInt(textAreas[3].getText().toString());
+//				registrarVenta(fecha, idCliente, idProducto, cantidad);
+				if(StaticUtilities.registerTest(true)) {
+					StaticUtilities.temporalMessage(labelTemp, "Se Registro Correctamente", Color.BLUE);
+				}else{
+					StaticUtilities.temporalMessage(labelTemp, "No se registro la Venta", Color.RED);				
+				}
+			}catch(NumberFormatException ex) {
+				StaticUtilities.temporalMessage(labelTemp, "Solo se aceptan numeros (0-10 digitos)", Color.RED);
 			}
 		}
 	}
@@ -131,7 +145,7 @@ public class Muebleria extends ButtonsFrame {
 	@Override
 	public void actionRight() {
 		System.out.println("Right");
-		new ConsultClients("Registro");
+		new Registrar("Registro", "Left", "Right");
 		StaticUtilities.returnButton.push(this);
 		this.dispose();
 	}
