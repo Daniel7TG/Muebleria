@@ -45,10 +45,6 @@ public class Muebleria extends ButtonsFrame {
 			new JTextArea("0"), 
 	};
 	Venta venta;
-//	String fecha;
-//	int idCliente;
-//	int idProducto;
-//	int cantidad;
 	
 	Muebleria(String textTittle, String textButtonLeft, String textButtonRight) {
 		super(textTittle, textButtonLeft, textButtonRight);
@@ -92,7 +88,7 @@ public class Muebleria extends ButtonsFrame {
 		StaticUtilities.stylesLabels(this, labels, textFont, new Dimension(150, 30), JLabel.LEFT);
 		StaticUtilities.stylesTextAreas(this, textAreas, textFont, new Dimension(260, 30));
 		StaticUtilities.time(textAreas[0]);
-
+		textAreas[0].setEditable(false);
 		// Añadir Labels y TextAreas
 		for(int i = 0; i < labels.length; i++) {
 			panels[0].add(labels[i]);
@@ -108,7 +104,7 @@ public class Muebleria extends ButtonsFrame {
 		
 		this.add(buttonsContainer, BorderLayout.SOUTH);
 		this.add(contentPanel, BorderLayout.CENTER);
-		
+				
 		this.revalidate();
 		this.repaint();
 	}

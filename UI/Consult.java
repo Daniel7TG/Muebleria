@@ -3,24 +3,29 @@ package UI;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 @SuppressWarnings("serial")
-public class Consult extends ButtonsFrame {
+public class Consult extends TitleFrame {
 	
 	private JLabel label = new JLabel("Productos escazos");
 	private JScrollPane tableScroll;
 	private JTable table;
 	private DefaultTableCellRenderer centerRenderer;
+	JButton button = new JButton();
+	JPanel buttonsContainer = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 60));
 	
 	Consult(String textTittle, String textButtonLeft, String textButtonRight) {
-		super(textTittle, textButtonLeft, textButtonRight);		
+		super(textTittle);		
 //		StaticUtilities.temporalMessage(this, "TEXTO", 0, 0);		
 		this.setLocationRelativeTo(null);
 
@@ -29,6 +34,9 @@ public class Consult extends ButtonsFrame {
 		
 		label.setFont(textFont);
 
+		button = StaticUtilities.createButton(this, this, "Mostrar Elementos", new Dimension(250, 150), textFont, buttonStaticColor);		
+		buttonsContainer.setBackground(null);
+		buttonsContainer.add(button, BorderLayout.CENTER);
 		this.add(buttonsContainer, BorderLayout.CENTER);
 			
 		
@@ -69,25 +77,19 @@ public class Consult extends ButtonsFrame {
         this.repaint();	
 	}
 
-	@Override
-	public void actionLeft() {
-		System.out.println("Left");
-		new ConsultClients("Clientes");
-		StaticUtilities.returnButton.push(this);
-		this.dispose();
+	public void actionPerformed(ActionEvent e) {
+		super.actionPerformed(e);
+		if(e.getSource() == button) {
+			System.out.println("Consultar");
+			new Tables("Consultar");
+			StaticUtilities.returnButton.push(this);
+			this.dispose();
+		}
 	}
 
-	@Override
-	public void actionRight() {
-		System.out.println("Right");
-		new ConsultVentas("Ventas");
-		StaticUtilities.returnButton.push(this);
-		this.dispose();
-	}
-
-	public static void main(String[] args) {
-		new Consult("Consultar", "Clientes", "Productos");
-	}
+//	public static void main(String[] args) {
+//		new Consult("Consultar", "Clientes", "Productos");
+//	}
 
 	
 }

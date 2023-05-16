@@ -12,6 +12,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 import Clases.Venta;
 
@@ -124,4 +126,6 @@ public class Form extends TitleFrame{
 		super.actionPerformed(e);
 		
 	}
+
+	
 }

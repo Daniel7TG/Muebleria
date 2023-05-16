@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.event.ActionListener;
+import java.awt.event.InputMethodListener;
 import java.awt.event.MouseListener;
 import java.util.Calendar;
 import java.util.Date;
@@ -18,6 +19,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.event.DocumentListener;
 
 import Clases.Cliente;
 import Clases.Venta;
@@ -28,12 +30,6 @@ public class StaticUtilities {
 	
 	public static void temporalMessage(JLabel label, String text, Color color) {
 		
-//		label.setPreferredSize(new Dimension(200, 200));
-//		GridBagConstraints grid = new GridBagConstraints();
-//		
-//		grid.gridx = x;
-//		grid.gridy = y;
-//		contentFrame.contentPanel.add(label, grid);
 		if(!label.getText().equals("")) {
 			return;
 		}
@@ -79,6 +75,7 @@ public class StaticUtilities {
 			textArea.setPreferredSize(size);
 		}
 	}
+
 	
 	public static JButton createButton(ActionListener action, MouseListener mouse, String text, Dimension size, Font font, Color rest) {
 		JButton newButton = new JButton();
@@ -96,14 +93,5 @@ public class StaticUtilities {
 	public static boolean registerTest(boolean bool) {
 		return bool;
 	}
-//	public static DefaultTableModel editable() {
-//		
-//		DefaultTableModel model = new DefaultTableModel(){
-//			@Override
-//		    public boolean isCellEditable(int row, int column) {
-//		        return false; // Deshabilitar la edición de todas las celdas
-//		    }
-//		};
-//		return model;
-//	}
+
 }
