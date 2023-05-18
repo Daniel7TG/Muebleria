@@ -19,6 +19,8 @@ import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 
+import Clases.IOOperations;
+
 public class Registrar extends ButtonsFrame{
 
 	JButton rest = new JButton();
@@ -26,6 +28,7 @@ public class Registrar extends ButtonsFrame{
 	JButton confirm = new JButton();
 	JTextArea idProduct = new JTextArea();
 	JLabel quantity = new JLabel("0");
+	JLabel labelTemp = new JLabel("");
 	int elementsHeight = 50;
 	
 	JPanel addExistencesContainer = new JPanel(new FlowLayout(FlowLayout.CENTER, 30, 0));
@@ -37,26 +40,21 @@ public class Registrar extends ButtonsFrame{
 		this.setLocationRelativeTo(null);
 
 		buttonsLayout.setVgap(120);
-		this.add(buttonsContainer, BorderLayout.CENTER);
 		
 		addExistencesContainer.setBackground(null);
 		productQuantity.setBackground(null);
 		productArea.setBackground(null);
 		addExistencesContainer.setPreferredSize(new Dimension(0, 150));
 		
-//		idProduct.setPreferredSize(new Dimension(120, elementsHeight));
-//		quantity.setPreferredSize(new Dimension(40, elementsHeight));
-	     
 		confirm = StaticUtilities.createButton(this, this, "Add", new Dimension(70, elementsHeight), tableTextFont, buttonStaticColor);
 		rest = StaticUtilities.createButton(this, this, "-", new Dimension(elementsHeight, elementsHeight), tableTextFont, buttonStaticColor);
-//		quantity.setEditable(false);
 		sum = StaticUtilities.createButton(this, this, "+", new Dimension(elementsHeight, elementsHeight), tableTextFont, buttonStaticColor);
 		
+		idProduct.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1, true));
 		StaticUtilities.stylesTextAreas(this, new JTextArea[]{idProduct}, new Font("Maiandra GD", Font.PLAIN, elementsHeight), new Dimension(160, elementsHeight));
-		idProduct.setBackground(null);
-		idProduct.setBorder(BorderFactory.createLineBorder(Color.gray, 1, true));
-		
 		StaticUtilities.stylesLabels(this, new JLabel[]{quantity}, textFont, new Dimension(90, elementsHeight), JLabel.CENTER);
+		StaticUtilities.stylesLabels(this, new JLabel[] {labelTemp}, textFont, new Dimension(500, 30), JLabel.CENTER);
+//		idProduct.setBackground(null);		
 		
 		productArea.add(idProduct);
 		productArea.add(confirm);
@@ -66,7 +64,9 @@ public class Registrar extends ButtonsFrame{
 		
 		addExistencesContainer.add(productArea);
 		addExistencesContainer.add(productQuantity);
+		addExistencesContainer.add(labelTemp);
 		
+		this.add(buttonsContainer, BorderLayout.CENTER);
 		this.add(addExistencesContainer, BorderLayout.SOUTH);
 		this.revalidate();
 		this.repaint();
@@ -80,16 +80,31 @@ public class Registrar extends ButtonsFrame{
 			int number = 1 + Integer.parseInt(quantity.getText());
 			quantity.setText(String.valueOf(number));
 		} else if(e.getSource() == rest) {
-			
 			int number = Integer.parseInt(quantity.getText()) - 1;
 			if(number >= 0) {
 				quantity.setText(String.valueOf(number));				
-			}
-			
+			}	
 		} else if(e.getSource() == confirm) {
-			
+			int id = -1;
+			try {
+				id = Integer.parseInt(idProduct.getText());
+			} catch(NumberFormatException ex) {
+				StaticUtilities.temporalMessage(labelTemp, "Formato de ID invalido", textErrorColor);
+				return;
+			}
+			for(int i = 0; i < IOOperations.listProductos.size(); i++) {
+				if(IOOperations.listProductos.get(i).getCodigo() == id) {
+					IOOperations.listProductos.get(i).setExistencia(IOOperations.listProductos.get(i).getExistencia() + Integer.parseInt(quantity.getText()));
+					quantity.setText("0");
+					idProduct.setText("");
+					StaticUtilities.temporalMessage(labelTemp, "Existencias agregadas correctamente", textColor);
+					return;
+				}
+			}				
+			StaticUtilities.temporalMessage(labelTemp, "No existe Producto con id = " + idProduct.getText(), textErrorColor);			
 		} 
 	}
+	
 	@Override
 	public void actionLeft() {
 		System.out.println("Left");

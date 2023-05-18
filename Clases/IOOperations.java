@@ -30,9 +30,9 @@ public class IOOperations {
 	/*
 	 * Definir arreglos vacios para almacenar los objetos de manera temporal
 	 */
-	static ArrayList<Cliente> listClientes = new ArrayList<>();
-	static ArrayList<Producto> listProductos = new ArrayList<>();
-	static ArrayList<Venta> listVentas = new ArrayList<>();
+	public static ArrayList<Cliente> listClientes = new ArrayList<>();
+	public static ArrayList<Producto> listProductos = new ArrayList<>();
+	public static ArrayList<Venta> listVentas = new ArrayList<>();
 	
 	
 	/*

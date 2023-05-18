@@ -15,17 +15,17 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 @SuppressWarnings("serial")
-public class Consult extends TitleFrame {
+public class Consult extends ButtonsFrame {
 	
 	private JLabel label = new JLabel("Productos escazos");
 	private JScrollPane tableScroll;
 	private JTable table;
 	private DefaultTableCellRenderer centerRenderer;
-	JButton button = new JButton();
-	JPanel buttonsContainer = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 60));
+//	JButton button = new JButton();
+//	JPanel buttonsContainer = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 60));
 	
 	Consult(String textTittle, String textButtonLeft, String textButtonRight) {
-		super(textTittle);		
+		super(textTittle, textButtonRight, textButtonRight);		
 //		StaticUtilities.temporalMessage(this, "TEXTO", 0, 0);		
 		this.setLocationRelativeTo(null);
 
@@ -34,10 +34,9 @@ public class Consult extends TitleFrame {
 		
 		label.setFont(textFont);
 
-		button = StaticUtilities.createButton(this, this, "Mostrar Elementos", new Dimension(250, 150), textFont, buttonStaticColor);		
+//		button = StaticUtilities.createButton(this, this, "Mostrar Elementos", new Dimension(250, 150), textFont, buttonStaticColor);		
 		buttonsContainer.setBackground(null);
-		buttonsContainer.add(button, BorderLayout.CENTER);
-		this.add(buttonsContainer, BorderLayout.CENTER);
+//		buttonsContainer.add(button, BorderLayout.CENTER);
 			
 		
         String[][] data = {
@@ -71,6 +70,8 @@ public class Consult extends TitleFrame {
         contentPanel.add(label);
         contentPanel.add(tableScroll);
         
+		this.add(buttonsContainer, BorderLayout.CENTER);
+
         this.add(contentPanel, BorderLayout.SOUTH);
   
         this.revalidate();
@@ -79,12 +80,29 @@ public class Consult extends TitleFrame {
 
 	public void actionPerformed(ActionEvent e) {
 		super.actionPerformed(e);
-		if(e.getSource() == button) {
-			System.out.println("Consultar");
-			new Tables("Consultar");
-			StaticUtilities.returnButton.push(this);
-			this.dispose();
-		}
+//		if(e.getSource() == button) {
+//			System.out.println("Consultar");
+//			new Tables("Consultar");
+//			StaticUtilities.returnButton.push(this);
+//			this.dispose();
+//		}
+	}
+
+	@Override
+	public void actionLeft() {
+		System.out.println("Consultar");
+		new Tables("Consultar");
+		StaticUtilities.returnButton.push(this);
+		this.dispose();		
+	}
+
+	@Override
+	public void actionRight() {
+		System.out.println("Consultar");
+		new Tables("Consultar");
+		StaticUtilities.returnButton.push(this);
+		this.dispose();		
+		
 	}
 
 //	public static void main(String[] args) {

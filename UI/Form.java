@@ -24,10 +24,10 @@ public class Form extends TitleFrame{
 	JPanel[] panels = new JPanel[] {
 			new JPanel(new FlowLayout(FlowLayout.RIGHT, 0, verticalFormGap)),
 			new JPanel(new FlowLayout(FlowLayout.CENTER, 0, verticalFormGap))};
-	private JLabel labelTemp = new JLabel("");
+	public JLabel labelTemp = new JLabel("");
 	
 //	int clave, String nombre, int rfc, String fecha, String domicilio
-	private JLabel[] labelsClients = new JLabel[]{
+	public JLabel[] labelsClients = new JLabel[]{
 			new JLabel("Clave"),
 			new JLabel("Nombre"),
 			new JLabel("RFC"),			
@@ -43,6 +43,7 @@ public class Form extends TitleFrame{
 	};
 //	String descripcion, String color, String dimension, int existencia, int precio
 	private JLabel[] labelsProductos = new JLabel[]{
+			new JLabel("Clave"),
 			new JLabel("Descripcion"),
 			new JLabel("Color"),			
 			new JLabel("Dimension"),			
@@ -50,6 +51,7 @@ public class Form extends TitleFrame{
 			new JLabel("Precio")			
 	};
 	public JTextArea[] textAreasProductos = new JTextArea[] {
+			new JTextArea("0"), 
 			new JTextArea(""), 
 			new JTextArea(""), 
 			new JTextArea("0x0"), 
@@ -59,7 +61,7 @@ public class Form extends TitleFrame{
 	
 	private JLabel formTitle = new JLabel();
 	private GridBagConstraints position = new GridBagConstraints();
-	private JButton ventaButton = new JButton();
+	public JButton ventaButton = new JButton();
 	
 //	JLabel[] labels;
 //	JTextArea[] textAreas;
@@ -122,10 +124,6 @@ public class Form extends TitleFrame{
 //		new Form("formulario");
 	}
 	
-	public void actionPerformed(ActionEvent e){
-		super.actionPerformed(e);
-		
-	}
 
 	
 }

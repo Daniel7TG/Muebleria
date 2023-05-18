@@ -36,7 +36,7 @@ public class StaticUtilities {
 		label.setForeground(color);
 		Timer timer = new Timer();
 		timer.schedule(new TimerTask(){
-			int time = 5;
+			int time = 2;
 			@Override
 			public void run() {
 				label.setText(text);

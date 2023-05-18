@@ -25,9 +25,12 @@ public class Main extends IOOperations{
 //		listClientes.clear();
 		
 
-		Cliente cliente = new Cliente();
-		cliente.setClave(listClientes.size()); //Asignar el ultimo elemento a la clave, solo para diferenciar
+		Cliente cliente = new Cliente(12, "nombre", "RFC", "00-00-0000", "Domicilio");
+//		cliente.setClave(listClientes.size()); //Asignar el ultimo elemento a la clave, solo para diferenciar
 		
+		Venta venta = new Venta("00-00-0000", 12, 0, 1, 200);
+		listVentas.add(venta); // Agregar el nuevo cliente a la lista
+
 		listClientes.add(cliente); // Agregar el nuevo cliente a la lista
 		writeAll(); // Reescribir todas las listas
 		

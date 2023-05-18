@@ -20,7 +20,8 @@ public class Producto implements Serializable{
 	
 	Producto(){
 	}
-	Producto(String descripcion, String color, String dimension, int existencia, int precio){
+	Producto(int codigo, String descripcion, String color, String dimension, int existencia, int precio){
+		this.codigo = codigo;
 		this.descripcion = descripcion;
 		this.color = color;
 		this.dimension = dimension;

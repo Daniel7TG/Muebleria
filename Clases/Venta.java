@@ -12,14 +12,14 @@ public class Venta implements Serializable{
 	private int cantidad;
 	private int costo;
 	
-	public Venta(){
+	Venta(){
 	}
-	Venta(String fecha, int codigoCliente, int codigoProducto, int cantidad){
+	Venta(String fecha, int codigoCliente, int codigoProducto, int cantidad, int costo){
 		this.fecha = fecha;
 		this.codigoCliente = codigoCliente;
 		this.codigoProducto = codigoProducto;
 		this.cantidad = cantidad;
-//		this.costo = costo;
+		this.costo = costo;
 	}
 	public String getFecha() {
 		return fecha;

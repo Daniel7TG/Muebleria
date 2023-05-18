@@ -13,13 +13,13 @@ public class Cliente implements Serializable {
 	}
 	private int clave;
 	private String nombre;
-	private int rfc;
+	private String rfc;
 	private String fecha;
 	private String domicilio;
 	
 	Cliente() {
 	}
-	Cliente(int clave, String nombre, int rfc, String fecha, String domicilio ) {
+	Cliente(int clave, String nombre, String rfc, String fecha, String domicilio ) {
 		this.clave = clave;
 		this.nombre = nombre;
 		this.rfc = rfc;
@@ -38,10 +38,10 @@ public class Cliente implements Serializable {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public int getRfc() {
+	public String getRfc() {
 		return rfc;
 	}
-	public void setRfc(int rfc) {
+	public void setRfc(String rfc) {
 		this.rfc = rfc;
 	}
 	public String getFecha() {

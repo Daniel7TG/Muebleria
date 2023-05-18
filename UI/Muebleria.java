@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import Clases.Cliente;
+import Clases.Metodos;
 import Clases.Venta;
 
 public class Muebleria extends ButtonsFrame {
@@ -81,6 +82,7 @@ public class Muebleria extends ButtonsFrame {
 		position.gridy = 1;
 		for(int i = 0; i < panels.length; i++) {
 			position.gridx = i;
+			panels[i].setBackground(extraBackgroundColor);
 			contentPanel.add(panels[i], position);
 		}
 		
@@ -119,13 +121,13 @@ public class Muebleria extends ButtonsFrame {
 				int idProducto = Integer.parseInt(textAreas[2].getText());
 				int cantidad = Integer.parseInt(textAreas[3].getText().toString());
 //				registrarVenta(fecha, idCliente, idProducto, cantidad);
-				if(StaticUtilities.registerTest(true)) {
-					StaticUtilities.temporalMessage(labelTemp, "Se Registro Correctamente", Color.BLUE);
+				if(Metodos.registrarVenta(cantidad, idProducto, idCliente, fecha)) {
+					StaticUtilities.temporalMessage(labelTemp, "Se Registro Correctamente", textColor);
 				}else{
-					StaticUtilities.temporalMessage(labelTemp, "No se registro la Venta", Color.RED);				
+					StaticUtilities.temporalMessage(labelTemp, "No se registro la Venta", textErrorColor);				
 				}
 			}catch(NumberFormatException ex) {
-				StaticUtilities.temporalMessage(labelTemp, "Solo se aceptan numeros (0-10 digitos)", Color.RED);
+				StaticUtilities.temporalMessage(labelTemp, "Solo se aceptan numeros (0-10 digitos)", textErrorColor);
 			}
 		}
 	}

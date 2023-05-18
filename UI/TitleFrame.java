@@ -20,11 +20,14 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public abstract class TitleFrame extends JFrame implements ActionListener, MouseListener {
 
-	public Color buttonStaticColor = new Color(0, 193, 172);
-	public Color buttonHoverColor = new Color(25, 176, 161);
-	public Color contentBackgroundColor = new Color(199, 231, 227); 
-	public Color titleBackgroundColor = new Color(197, 241, 236); 
-	public Color extraBackgroundColor = new Color(199, 231, 227); 
+	public Color buttonStaticColor = new Color(244, 225, 141);
+	public Color buttonHoverColor = new Color(180, 244, 255);//mouse encima
+	public Color contentBackgroundColor = new Color(253, 240, 229); 
+	public Color titleBackgroundColor = new Color(217, 173, 118); 
+	public Color extraBackgroundColor = new Color(255, 197, 147); 
+	
+	public Color textErrorColor = new Color(150, 15, 15); 
+	public Color textColor = new Color(201, 153, 94); 
 	
 	public JPanel titlePanel = new JPanel();
 	public JPanel contentPanel = new JPanel();
@@ -98,7 +101,7 @@ public abstract class TitleFrame extends JFrame implements ActionListener, Mouse
 			titleButton.setIcon(buttonIconHover);
 		}
 		if(e.getSource().getClass().equals(JButton.class)) {
-			e.getComponent().setBackground(buttonStaticColor);			
+			e.getComponent().setBackground(buttonHoverColor);			
 		}
 	}
 	
@@ -110,7 +113,7 @@ public abstract class TitleFrame extends JFrame implements ActionListener, Mouse
 
 		}
 		else if(e.getSource().getClass().equals(JButton.class)) {
-			e.getComponent().setBackground(buttonHoverColor);
+			e.getComponent().setBackground(buttonStaticColor);
 		}
 	}
 	
